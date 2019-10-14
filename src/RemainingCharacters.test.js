@@ -20,5 +20,5 @@ it("renders the children prop", () => {
   );
 
   // expect(container.textContent).toBe("7");
-  expect(container).toHaveTextContent("7");
+  expect(container).toHaveTextContent(/^7$/);
 });
