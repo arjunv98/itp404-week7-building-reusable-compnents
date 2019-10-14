@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const ENTER_KEY = 13;
 const ESCAPE_KEY = 27;
@@ -16,13 +16,13 @@ export default class InlineEdit extends React.Component {
     this.setState({
       editMode: true
     });
-  }
-  handleChange = (event) => {
+  };
+  handleChange = event => {
     this.setState({
       currentValue: event.target.value
     });
-  }
-  handleKeyUp = (event) => {
+  };
+  handleKeyUp = event => {
     const { keyCode } = event;
     const { currentValue } = this.state;
 
@@ -37,9 +37,9 @@ export default class InlineEdit extends React.Component {
         currentValue: this.props.value
       });
     }
-  }
+  };
   render() {
-    if (typeof this.props.children === 'function') {
+    if (typeof this.props.children === "function") {
       return this.props.children(
         this.state.editMode,
         this.state.currentValue,
@@ -52,14 +52,16 @@ export default class InlineEdit extends React.Component {
     if (this.state.editMode) {
       return (
         <input
+          data-testid="inline-edit-input"
           value={this.state.currentValue}
           onKeyUp={this.handleKeyUp}
-          onChange={this.handleChange} />
+          onChange={this.handleChange}
+        />
       );
     }
 
     return (
-      <span onClick={this.enableEditMode}>
+      <span data-testid="inline-edit-text" onClick={this.enableEditMode}>
         {this.props.value}
       </span>
     );

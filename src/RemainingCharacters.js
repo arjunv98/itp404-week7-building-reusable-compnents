@@ -1,16 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function RemainingCharacters(props) {
   const { max, text, children } = props;
   const remaining = max - text.length;
 
-  if (typeof children === 'function') {
+  if (typeof children === "function") {
     return children(remaining);
   } else {
-    return (
-      <>{remaining} characters left</>
-    );
+    return <>{remaining} characters left</>;
   }
 }
 
